@@ -4,6 +4,6 @@ Simple JavaScript require.js module that calculates Six Sigma style control limi
 
 Performs the following control limit checks on the dataset:
 
-* (WESTERN ELECTRIC RULES)[https://en.wikipedia.org/wiki/Western_Electric_rules]
-* (WESTERN ELECTRIC ASYMETRIC CONTROL LIMIT RULES)(https://en.wikipedia.org/wiki/Western_Electric_rules)
-* (NELSON CONTROL LIMIT RULES)[https://en.wikipedia.org/wiki/Nelson_rules]
+* [WESTERN ELECTRIC RULES](https://en.wikipedia.org/wiki/Western_Electric_rules)
+* [WESTERN ELECTRIC ASYMETRIC CONTROL LIMIT RULES](https://en.wikipedia.org/wiki/Western_Electric_rules)
+* [NELSON CONTROL LIMIT RULES](https://en.wikipedia.org/wiki/Nelson_rules)
