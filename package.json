@@ -6,13 +6,15 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
-    "test": "mocha -r ts-node/register ts/tests/**/*.spec.ts"
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register ts/tests/**/*.spec.ts"
   },
   "devDependencies": {
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.43",
     "chai": "^4.1.2",
+    "cross-env": "^5.0.5",
     "mocha": "^4.0.0",
+    "requirejs": "^2.3.5",
     "ts-node": "^3.3.0"
   },
   "dependencies": {}
