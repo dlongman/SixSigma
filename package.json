@@ -5,8 +5,7 @@
   "author": "David Longman",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p .",
-    "test": "jasmine"
+    "build": "tsc -p ."
   },
   "devDependencies": {
   },
