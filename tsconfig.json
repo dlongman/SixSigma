@@ -11,7 +11,10 @@
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "types": [
-            
         ]
-    }
+    },
+    "exclude": [
+        "node_modules",
+        "typings"
+      ]
 }
