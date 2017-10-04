@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
-    "test": "jasmine"
+    "test": "mocha -r ts-node/register ts/tests/**/*.spec.ts"
   },
   "devDependencies": {
     "@types/chai": "^4.0.4",
