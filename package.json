@@ -1,0 +1,17 @@
+{
+  "name": "sixsigma",
+  "version": "0.0.2",
+  "description": "Utility methods to calculate 6 Sigma statistics",
+  "author": "David Longman",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "jasmine"
+  },
+  "devDependencies": {
+    // "jasmine": "^2.8.0"
+  },
+  "dependencies": {
+
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        // "outFile": "./js/app.js",
+        "outDir": "./scripts",
+        "module": "amd", 
+        "sourceMap": true,
+        "removeComments": true,
+        "noImplicitAny" : true,
+        "alwaysStrict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "types": [
+            
+        ]
+    }
+}

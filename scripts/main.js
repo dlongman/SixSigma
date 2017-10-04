@@ -1,16 +1,17 @@
-requirejs(["sixsigma"], function(sixsigma) {
-
+define(["require", "exports", "./sixsigma"], function (require, exports, SixSigma) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     function addDataArrayToHtmlTable(dataArray, columnIndex, createNewRows) {
         var table = document.getElementById("data-table");
-        for(i=0; i < dataArray.length;i++) {
-            var row = 0;
-            if (createNewRows === true){
+        var i;
+        for (i = 0; i < dataArray.length; i++) {
+            var row;
+            if (createNewRows === true) {
                 row = table.insertRow(table.rows.length);
             }
             else {
-                row = table.rows[i+1];
+                row = table.rows[i + 1];
             }
-            
             var cell = row.insertCell(columnIndex);
             if (dataArray[i] === undefined) {
                 cell.innerHTML = "";
@@ -23,32 +24,20 @@ requirejs(["sixsigma"], function(sixsigma) {
             }
         }
     }
-
     function addValueToSummaryTable(dataType, dataValue) {
         var cell = document.getElementById(dataType);
         cell.innerHTML = dataValue;
     }
-
-    // This function is called when scripts/sixsigma.js is loaded.
-    // If sixsigma.js calls define(), then this function is not fired until
-    // sixsigma's dependencies have loaded, and the sixsigma argument will hold
-    // the module value for "sixsigma".
-
-    // this is just some test data to check the code is working
-    var testDataset = [0,0,1,23,26,18,2,10,35,13,34,40,36,29,0,8,0,20,13,31,26,36,13,34,20,24,0,49.5,37,8,10,34,3,20,24,26,25,0,42,0,37,0];
-
-    addDataArrayToHtmlTable(testDataset, 0, true);    
-
-    sixsigma.init(testDataset, false, "*");
-
-    addValueToSummaryTable("lcl-value", sixsigma.LCL());
-    addValueToSummaryTable("ucl-value", sixsigma.UCL());
-    addValueToSummaryTable("2sigma-lcl-value", sixsigma.twoSigmaLCL());
-    addValueToSummaryTable("2sigma-ucl-value", sixsigma.twoSigmaUCL());
-    addValueToSummaryTable("1sigma-ucl-value", sixsigma.oneSigmaUCL());
-    addValueToSummaryTable("1sigma-lcl-value", sixsigma.oneSigmaLCL());
-    addValueToSummaryTable("cl-value", sixsigma.centreCL());
-
+    var testDataset = [0, 0, 1, 20, 26, 18, 2, 10, 37, 13, 16, 40, 15, 29, 0, 8, 0, 20, 13, 31, 21, 36, 13, 34, 20, 37, 0, 49.5, 38, 16, 10, 34, 29, 25, 27, 29, 25, 22, 42, 35, 0, 18, 27, 26, 33, 34, 36, 32, 36, 29, 18, 34, 28, 21, 19, 21, 16, 21, 22, 35, 27, 16, 26, 21];
+    addDataArrayToHtmlTable(testDataset, 0, true);
+    var sixsigma = new SixSigma(testDataset, false);
+    addValueToSummaryTable("lcl-value", sixsigma.lowerConfidenceLimit);
+    addValueToSummaryTable("ucl-value", sixsigma.upperConfidenceLimit);
+    addValueToSummaryTable("2sigma-lcl-value", sixsigma.twoSigmaLowerConfidenceLimit);
+    addValueToSummaryTable("2sigma-ucl-value", sixsigma.twoSigmaUpperConfidenceLimit);
+    addValueToSummaryTable("1sigma-ucl-value", sixsigma.oneSigmaUpperConfidenceLimit);
+    addValueToSummaryTable("1sigma-lcl-value", sixsigma.oneSigmaLowerConfidenceLimit);
+    addValueToSummaryTable("cl-value", sixsigma.centreConfidenceLimit);
     addDataArrayToHtmlTable(sixsigma.onePointGreaterThanThreeSigmaFromCL(), 1, false);
     addDataArrayToHtmlTable(sixsigma.twoOutOfThreeConsecutivePointsOutsideTwoSigmaLimit(), 2, false);
     addDataArrayToHtmlTable(sixsigma.fourOutOfFiveConsecutivePointsOutsideOneSigmaLimit(), 3, false);
@@ -64,6 +53,6 @@ requirejs(["sixsigma"], function(sixsigma) {
     addDataArrayToHtmlTable(sixsigma.fourteenPointsInARowAlternateUpAndDown(), 13, false);
     addDataArrayToHtmlTable(sixsigma.fifteenPointsInARowWithinOneSigmaLimitOnEitherSideOfCentreLine(), 14, false);
     addDataArrayToHtmlTable(sixsigma.eightPointsInARowOutsideOneSigmaOfCentreLineAndPointsAreBothSideOfCentreLine(), 15, false);
-    
     addDataArrayToHtmlTable(sixsigma.fourteenPointsInARowAlternateUpAndDown(), 16, false);
 });
+//# sourceMappingURL=main.js.map
