@@ -9,9 +9,7 @@
     "test": "jasmine"
   },
   "devDependencies": {
-    // "jasmine": "^2.8.0"
   },
   "dependencies": {
-
   }
 }
