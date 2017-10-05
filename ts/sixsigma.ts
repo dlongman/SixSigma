@@ -47,14 +47,14 @@ class SixSigma {
     // https://en.wikipedia.org/wiki/Western_Electric_rules
     // ************************************************************************
     // RULE 1
-    public onePointGreaterThanThreeSigmaFromCL() {
+    public onePointGreaterThanThreeSigmaFromCL(): any[] {
         return this.data.map(function (value: number) {
             return (value > this.upperConfidenceLimit) ? this._formatDisplayValue(value) : undefined;
         }.bind(this));
     }
 
     // RULE 2
-    public twoOutOfThreeConsecutivePointsOutsideTwoSigmaLimit() {
+    public twoOutOfThreeConsecutivePointsOutsideTwoSigmaLimit(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
 
             // check whether we get a hit above threshold
@@ -78,7 +78,7 @@ class SixSigma {
     }
 
     // RULE 3
-    public fourOutOfFiveConsecutivePointsOutsideOneSigmaLimit() {
+    public fourOutOfFiveConsecutivePointsOutsideOneSigmaLimit(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
 
             // check whether we get a hit above threshold
@@ -103,7 +103,7 @@ class SixSigma {
     }
 
     // RULE 4
-    public nineConsecutivePointsOnSameSideOfCL() {
+    public nineConsecutivePointsOnSameSideOfCL(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             var aboveClCounter = 0;
             var belowClCounter = 0;
@@ -134,11 +134,11 @@ class SixSigma {
     // https://en.wikipedia.org/wiki/Western_Electric_rules
     // ************************************************************************
 
-    public anyPointGreaterThanThreeSigmaLimit() {
+    public anyPointGreaterThanThreeSigmaLimit(): any[] {
         return this.onePointGreaterThanThreeSigmaFromCL();
     }
 
-    public twoConsecutivePointsAboveTwoSigmaLimit() {
+    public twoConsecutivePointsAboveTwoSigmaLimit(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             return this._xValuesAboveThreshold(value,
                 index,
@@ -149,7 +149,7 @@ class SixSigma {
         }.bind(this));
     }
 
-    public threeConsecutivePointsAboveOneSigmaLimit() {
+    public threeConsecutivePointsAboveOneSigmaLimit(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             return this._xValuesAboveThreshold(value,
                 index,
@@ -160,7 +160,7 @@ class SixSigma {
         }.bind(this));
     }
 
-    public sevenConsecutivePointsFallingAboveCL() {
+    public sevenConsecutivePointsFallingAboveCL(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             return this._xValuesAboveThreshold(value,
                     index,
@@ -171,7 +171,7 @@ class SixSigma {
         }.bind(this));
     }
 
-    public tenConsecutivePointsFallingBelowCL() {
+    public tenConsecutivePointsFallingBelowCL(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             return this._xValuesBelowThreshold(value,
                     index,
@@ -182,7 +182,7 @@ class SixSigma {
         }.bind(this));
     }
 
-    public fourConsecutivePointsBelowTwoSigmaLowerLimit() {
+    public fourConsecutivePointsBelowTwoSigmaLowerLimit(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             return this._xValuesBelowThreshold(value,
                     index,
@@ -193,7 +193,7 @@ class SixSigma {
         }.bind(this));
     }
 
-    public sixConsecutivePointsBelowOneSigmaLowerLimit() {
+    public sixConsecutivePointsBelowOneSigmaLowerLimit(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             return this._xValuesBelowThreshold(value,
                     index,
@@ -210,7 +210,7 @@ class SixSigma {
     // ************************************************************************
 
     // RULE 3
-    public sixPointsInARowContinuallyIncresingOrDecresing() {
+    public sixPointsInARowContinuallyIncresingOrDecresing(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             if (index >= 5) {
 
@@ -247,7 +247,7 @@ class SixSigma {
     }
 
     // RULE 4
-    public fourteenPointsInARowAlternateUpAndDown() {
+    public fourteenPointsInARowAlternateUpAndDown(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             if (index >= 13) {
 
@@ -288,7 +288,7 @@ class SixSigma {
     }
 
     // RULE 7
-    public fifteenPointsInARowWithinOneSigmaLimitOnEitherSideOfCentreLine() {
+    public fifteenPointsInARowWithinOneSigmaLimitOnEitherSideOfCentreLine(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             if (index >= 14) {
 
@@ -319,7 +319,7 @@ class SixSigma {
     }
 
     // RULE 8
-    public eightPointsInARowOutsideOneSigmaOfCentreLineAndPointsAreBothSideOfCentreLine() {
+    public eightPointsInARowOutsideOneSigmaOfCentreLineAndPointsAreBothSideOfCentreLine(): any[] {
         return this.data.map(function (value: number, index: number, dataArray: number[]) {
             if (index >= 7) {
 
