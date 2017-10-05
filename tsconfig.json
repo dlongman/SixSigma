@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "target": "es5",
-        // "outFile": "./js/app.js",
-        "outDir": "./scripts",
+        // "outFile": "./js/six-sigma-control-limits.js",
+        "outDir": "./js",
         "module": "amd", 
         "sourceMap": true,
         "removeComments": true,
@@ -15,6 +15,7 @@
     },
     "exclude": [
         "node_modules",
-        "typings"
+        "typings",
+        "./ts/tests/**/*"
       ]
 }
