@@ -1,7 +1,7 @@
 {
-  "name": "sixsigma",
+  "name": "six-sigma-control-limits",
   "version": "0.0.2",
-  "description": "Utility methods to calculate 6 Sigma statistics",
+  "description": "Utility methods to calculate 6 Sigma control limits from a dataset",
   "author": "David Longman",
   "license": "MIT",
   "scripts": {
