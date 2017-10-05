@@ -15,7 +15,8 @@
     "cross-env": "^5.0.5",
     "mocha": "^4.0.0",
     "requirejs": "^2.3.5",
-    "ts-node": "^3.3.0"
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
   },
   "dependencies": {}
 }
