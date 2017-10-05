@@ -4,6 +4,9 @@ define(["require", "exports"], function (require, exports) {
         function MathHelper() {
         }
         MathHelper.meanVariance = function (values) {
+            if (values === undefined) {
+                throw new Error("the values parameter must be a number[].");
+            }
             var variances = values.map(function (value, index, data) {
                 if (index < data.length - 1) {
                     return Math.abs(value - data[index + 1]);
@@ -15,6 +18,9 @@ define(["require", "exports"], function (require, exports) {
             return this.average(variances);
         };
         MathHelper.standardDeviation = function (values) {
+            if (values === undefined) {
+                throw new Error("the values parameter must be a number[].");
+            }
             var avg = this.average(values);
             var squareDiffs = values.map(function (value) {
                 var diff = value - avg;
@@ -26,6 +32,9 @@ define(["require", "exports"], function (require, exports) {
             return stdDev;
         };
         MathHelper.average = function (data) {
+            if (data === undefined) {
+                throw new Error("the data parameter must be a number[].");
+            }
             var sum = data.reduce(function (sum, value) {
                 return sum + value;
             }, 0);
@@ -33,12 +42,18 @@ define(["require", "exports"], function (require, exports) {
             return avg;
         };
         MathHelper.min = function (data) {
+            if (data === undefined) {
+                throw new Error("the data parameter must be a number[].");
+            }
             var minVal = data.reduce(function (minVal, value) {
                 return (value < minVal) ? value : minVal;
             });
             return minVal;
         };
         MathHelper.max = function (data) {
+            if (data === undefined) {
+                throw new Error("the data parameter must be a number[].");
+            }
             var maxVal = data.reduce(function (maxVal, value) {
                 return ((value > maxVal) ? value : maxVal);
             });

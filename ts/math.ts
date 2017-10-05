@@ -2,6 +2,11 @@ class MathHelper {
 
     // calculates the mean variance of the supplied dataset
     public static meanVariance(values : number[]) : number {
+        
+        if (values === undefined) {
+            throw new Error("the values parameter must be a number[]."); 
+        }
+        
         // calculate the variance between the data points
         var variances = values.map(function (value, index, data) {
             if (index < data.length - 1) {
@@ -16,6 +21,11 @@ class MathHelper {
 
     // calculates the standard deviation of the supplied dataset
     public static standardDeviation(values: number[]) : number {
+        
+        if (values === undefined) {
+            throw new Error("the values parameter must be a number[]."); 
+        }
+
         var avg = this.average(values);
 
         var squareDiffs = values.map(function (value) {
@@ -32,16 +42,26 @@ class MathHelper {
 
     // calculates the numerical average of the supplied dataset
     public static average(data: number[]) : number {
-        var sum = data.reduce(function (sum, value) {
+        
+        if (data === undefined) {
+            throw new Error("the data parameter must be a number[]."); 
+        }
+
+        var sum: number = data.reduce(function (sum: number, value: number) {
             return sum + value;
         }, 0);
 
-        var avg = sum / data.length;
+        var avg: number = sum / data.length;
         return avg;
     }
 
     // returns the smallest value in the supplied dataset
     public static min(data: number[]) : number {
+        
+        if (data === undefined) {
+            throw new Error("the data parameter must be a number[]."); 
+        }
+
         var minVal = data.reduce(function (minVal, value) {
             return (value < minVal) ? value : minVal;
         });
@@ -51,6 +71,11 @@ class MathHelper {
 
     // returns the largest value in the supplied dataset
     public static max(data: number[]) : number {
+        
+        if (data === undefined) {
+            throw new Error("the data parameter must be a number[]."); 
+        }
+
         var maxVal = data.reduce(function (maxVal, value) {
             return ((value > maxVal) ? value : maxVal);
         });
