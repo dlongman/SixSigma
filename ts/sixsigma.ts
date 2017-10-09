@@ -1,3 +1,5 @@
+/// <reference path="./math.ts" />
+
 import MathHelper = require("./math");
 
 class SixSigma {

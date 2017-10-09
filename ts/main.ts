@@ -1,3 +1,5 @@
+/// <reference path="./sixsigma.ts" />
+
 import SixSigma = require("./sixsigma");
 
 function addDataArrayToHtmlTable(dataArray : any[], columnIndex : number, createNewRows : boolean) : void {
