@@ -1,6 +1,6 @@
 {
   "name": "six-sigma-control-limits",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utility methods to calculate 6 Sigma control limits from a dataset",
   "author": "David Longman",
   "license": "MIT",
@@ -12,6 +12,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dlongman/SixSigma.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "main": "./js/sixsigma.js",
   "types": "./ts/sixsigma/main.d.ts",
