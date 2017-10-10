@@ -16,32 +16,12 @@
  *~ workarounds for this limitation of ES6 modules.
  */
 
-/*~ If this module is a UMD module that exposes a global variable 'myClassLib' when
- *~ loaded outside a module loader environment, declare that global here.
- *~ Otherwise, delete this declaration.
- */
-// export as namespace SixSigma;
-
-/*~ This declaration specifies that the class constructor function
- *~ is the exported object from the file
- */
-export = MathHelper;
-
-/*~ Write your module's methods and properties in this class */
-declare class MathHelper {
-    public static meanVariance(values : number[]) : number;
-    public static standardDeviation(values: number[]) : number;
-    public static average(data: number[]) : number;
-    public static max(data: number[]) : number;
-    public static movingAverage(data: number[], period: number) : number[];
+declare module "MathHelper" {
+    export class MathHelper {
+        public static meanVariance(values : number[]) : number;
+        public static standardDeviation(values: number[]) : number;
+        public static average(data: number[]) : number;
+        public static max(data: number[]) : number;
+        public static movingAverage(data: number[], period: number) : number[];
+    }
 }
-
-/*~ If you want to expose types from your module as well, you can
- *~ place them in this block.
- */
-// declare namespace SixSigma {
-//     export interface MyClassMethodOptions {
-//         width?: number;
-//         height?: number;
-//     }
-// }
