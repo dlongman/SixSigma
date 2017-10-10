@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/dlongman/SixSigma/compare/v1.0.4...v1.0.5) (2017-10-10)
+
+
+### Bug Fixes
+
+* re-added standard-version ([b2add49](https://github.com/dlongman/SixSigma/commit/b2add49))
+* updated mocha version ([7be2c9e](https://github.com/dlongman/SixSigma/commit/7be2c9e))
+* updated npm run release step ([fc98ac4](https://github.com/dlongman/SixSigma/commit/fc98ac4))
+* used wrong name for standard-version ([fc04c5b](https://github.com/dlongman/SixSigma/commit/fc04c5b))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/dlongman/SixSigma/compare/v1.0.3...v1.0.4) (2017-10-10)
 
