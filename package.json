@@ -23,6 +23,7 @@
     "build": "tsc -p .",
     "postbuild": "npm run test",
     "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register ts/tests/**/*.spec.ts",
+    "release": "standard-release",
     "gitpush": "git push --follow-tags origin master"
   },
   "devDependencies": {
@@ -31,6 +32,7 @@
     "chai": "^4.1.2",
     "cross-env": "^5.0.5",
     "mocha": "^4.0.0",
+    "standard-version": "^4.2.0",
     "ts-node": "^3.3.0",
     "typescript": "^2.5.3"
   },
