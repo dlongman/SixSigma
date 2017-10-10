@@ -23,7 +23,7 @@
     "build": "tsc -p .",
     "postbuild": "npm run test",
     "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register ts/tests/**/*.spec.ts",
-    "release": "standard-release",
+    "release": "standard-release && npm run gitpush",
     "gitpush": "git push --follow-tags origin master"
   },
   "devDependencies": {
