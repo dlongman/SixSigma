@@ -1,6 +1,6 @@
 {
   "name": "six-sigma-control-limits",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Utility methods to calculate 6 Sigma control limits from a dataset",
   "author": "David Longman",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "build": "tsc -p .",
     "postbuild": "npm run test",
     "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register ts/tests/**/*.spec.ts",
+    "posttest": "npm run release",
     "publish": "npm publish --tag next",
     "release": "standard-version"
   },
