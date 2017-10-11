@@ -4,9 +4,7 @@ define(["require", "exports"], function (require, exports) {
         function MathHelper() {
         }
         MathHelper.meanVariance = function (data) {
-            if (data === undefined) {
-                throw new Error("the values parameter must be a number[].");
-            }
+            data = MathHelper.validateData(data);
             var variances = data.map(function (value, index, arr) {
                 if (index < arr.length - 1) {
                     return Math.abs(value - arr[index + 1]);
@@ -18,9 +16,7 @@ define(["require", "exports"], function (require, exports) {
             return MathHelper.average(variances);
         };
         MathHelper.standardDeviation = function (data) {
-            if (data === undefined) {
-                throw new Error("the values parameter must be a number[].");
-            }
+            data = MathHelper.validateData(data);
             var avg = MathHelper.average(data);
             var squareDiffs = data.map(function (value) {
                 var diff = value - avg;
@@ -32,35 +28,27 @@ define(["require", "exports"], function (require, exports) {
             return stdDev;
         };
         MathHelper.average = function (data) {
-            if (data === undefined) {
-                throw new Error("the data parameter must be a number[].");
-            }
+            data = MathHelper.validateData(data);
             var sum = MathHelper.sum(data);
             var avg = sum / data.length;
             return avg;
         };
         MathHelper.sum = function (data) {
-            if (data === undefined) {
-                throw new Error("the data parameter must be a number[].");
-            }
+            data = MathHelper.validateData(data);
             var sum = data.reduce(function (sum, value) {
                 return sum + value;
             }, 0);
             return sum;
         };
         MathHelper.min = function (data) {
-            if (data === undefined) {
-                throw new Error("the data parameter must be a number[].");
-            }
+            data = MathHelper.validateData(data);
             var minVal = data.reduce(function (minVal, value) {
                 return (value < minVal) ? value : minVal;
             });
             return minVal;
         };
         MathHelper.max = function (data) {
-            if (data === undefined) {
-                throw new Error("the data parameter must be a number[].");
-            }
+            data = MathHelper.validateData(data);
             var maxVal = data.reduce(function (maxVal, value) {
                 return ((value > maxVal) ? value : maxVal);
             });
@@ -70,7 +58,7 @@ define(["require", "exports"], function (require, exports) {
             return this.movingFunction(data, period, MathHelper.average);
         };
         MathHelper.movingFunction = function (data, period, func) {
-            console.log(func);
+            data = MathHelper.validateData(data);
             var returnValue = [];
             var index;
             var lowIndex;
@@ -88,6 +76,14 @@ define(["require", "exports"], function (require, exports) {
                 }
             }
             return returnValue;
+        };
+        MathHelper.validateData = function (data) {
+            if (data === undefined) {
+                throw new Error("the data parameter must be a number[].");
+            }
+            return data.filter(function (item) {
+                return item != undefined;
+            });
         };
         return MathHelper;
     }());

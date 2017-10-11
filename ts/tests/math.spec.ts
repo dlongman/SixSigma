@@ -11,6 +11,11 @@ describe('Check MathHelper module function ', function () {
             expect(MathHelper.sum(data)).to.equal(15);
         });
 
+        it("ignores undefined values", () => {
+            var data = [3, 1, 13, undefined, undefined];
+            expect(MathHelper.sum(data)).to.equal(17);
+        });
+
         it("returns 15 when given [1.0, 2.0, 3.0, 4.0, 5.0]", () => {
             var data = [1.0, 2.0, 3.0, 4.0, 5.0];
             expect(MathHelper.sum(data)).to.equal(15);
@@ -50,6 +55,11 @@ describe('Check MathHelper module function ', function () {
         it('returns 3 when given [1,2,3,4,5]', () => {
             var data = [1, 2, 3, 4, 5];
             expect(MathHelper.average(data)).to.equal(3);
+        });
+
+        it("ignores undefined values", () => {
+            var data = [3, 1, 2, undefined, undefined];
+            expect(MathHelper.average(data)).to.equal(2);
         });
 
         it('returns 3 when given [1.0, 2.0, 3.0, 4.0, 5.0]', () => {
@@ -96,6 +106,11 @@ describe('Check MathHelper module function ', function () {
         it('returns 1.41 when given [1.0,2.0,3.0,4.0,5.0]', () => {
             var data = [1.0,2.0,3.0,4.0,5.0];
             expect(MathHelper.standardDeviation(data).toFixed(2)).to.equal('1.41');
+        });
+
+        it("ignores undefined values", () => {
+            var data = [3, 1, 2, undefined, undefined];
+            expect(MathHelper.standardDeviation(data).toFixed(2)).to.equal("0.82");
         });
 
         it('returns 1.85 when given [-1,-2,3,2,1]', () => {
@@ -152,6 +167,11 @@ describe('Check MathHelper module function ', function () {
             expect(MathHelper.min(data)).to.equal(1);
         });
 
+        it("ignores undefined values", () => {
+            var data = [3, 1, 2, undefined, undefined];
+            expect(MathHelper.min(data)).to.equal(1);
+        });
+
         it('returns 1 when given [1.0,2.0,3.0,4.0,5.0]', () => {
             var data = [1.0,2.0,3.0,4.0,5.0];
             expect(MathHelper.min(data)).to.equal(1);
@@ -193,6 +213,11 @@ describe('Check MathHelper module function ', function () {
             expect(MathHelper.max(data)).to.equal(5);
         });
 
+        it("ignores undefined values", () => {
+            var data = [3, 1, 2, undefined, undefined];
+            expect(MathHelper.max(data)).to.equal(3);
+        });
+
         it('returns 5 when given [1.0,2.0,3.0,4.0,5.0]', () => {
             var data = [1.0,2.0,3.0,4.0,5.0];
             expect(MathHelper.max(data)).to.equal(5);
@@ -232,6 +257,11 @@ describe('Check MathHelper module function ', function () {
         it("returns [undefined,undefined,2,3,4] when given [1,2,3,4,5] and a period of 3", () => {
             var data: number[] = [1,2,3,4,5];
             expect(MathHelper.movingAverage(data, 3)).to.deep.equal([undefined, undefined, 2,3,4]);
+        });
+
+        it("returns [undefined,undefined,2,3] when given [1,2,3,4,undefined] and a period of 3", () => {
+            var data: number[] = [1,2,3,4,undefined];
+            expect(MathHelper.movingAverage(data, 3)).to.deep.equal([undefined, undefined, 2,3]);
         });
 
         it("returns [undefined, undefined, 0, 0, 0] when given [0,0,0,0,0] and a period of 3", () => {

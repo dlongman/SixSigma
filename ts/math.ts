@@ -6,9 +6,7 @@ class MathHelper {
      */
     public static meanVariance(data : number[]) : number {
         
-        if (data === undefined) {
-            throw new Error("the values parameter must be a number[]."); 
-        }
+        data = MathHelper.validateData(data);
         
         // calculate the variance between the data points
         var variances = data.map(function (value, index, arr) {
@@ -28,10 +26,7 @@ class MathHelper {
      */
     public static standardDeviation(data: number[]) : number {
         
-        if (data === undefined) {
-            throw new Error("the values parameter must be a number[]."); 
-        }
-
+        data = MathHelper.validateData(data);
         var avg = MathHelper.average(data);
 
         var squareDiffs = data.map(function (value) {
@@ -52,10 +47,7 @@ class MathHelper {
      */
     public static average(data: number[]) : number {
         
-        if (data === undefined) {
-            throw new Error("the data parameter must be a number[]."); 
-        }
-
+        data = MathHelper.validateData(data);
         var sum: number = MathHelper.sum(data); 
 
         var avg: number = sum / data.length;
@@ -68,10 +60,7 @@ class MathHelper {
      */
     public static sum(data: number[]) : number {
         
-        if (data === undefined) {
-            throw new Error("the data parameter must be a number[]."); 
-        }
-
+        data = MathHelper.validateData(data);
         var sum: number = data.reduce(function (sum: number, value: number) {
             return sum + value;
         }, 0);
@@ -85,10 +74,7 @@ class MathHelper {
      */
     public static min(data: number[]) : number {
         
-        if (data === undefined) {
-            throw new Error("the data parameter must be a number[]."); 
-        }
-
+        data = MathHelper.validateData(data);
         var minVal = data.reduce(function (minVal, value) {
             return (value < minVal) ? value : minVal;
         });
@@ -102,10 +88,7 @@ class MathHelper {
      */
     public static max(data: number[]) : number {
         
-        if (data === undefined) {
-            throw new Error("the data parameter must be a number[]."); 
-        }
-
+        data = MathHelper.validateData(data);
         var maxVal = data.reduce(function (maxVal, value) {
             return ((value > maxVal) ? value : maxVal);
         });
@@ -128,7 +111,7 @@ class MathHelper {
      */
     public static movingFunction(data: number[], period: number, func: Function) : number[] {
 
-        console.log(func);
+        data = MathHelper.validateData(data);
         var returnValue = [];
 
         // loop through data array and calculate the average for each value
@@ -150,6 +133,22 @@ class MathHelper {
         }
 
         return returnValue;
+    }
+
+    /**
+     * Single function to validate that the data is ready for analysis
+     * Removes undefined values and throws an error is the whole object is undefined
+     * @param data the data set to process
+     */
+    public static validateData(data: number[]): number[] {
+        if (data === undefined) {
+            throw new Error("the data parameter must be a number[]."); 
+        }
+
+        // remove any undefined values from array
+        return data.filter((item) => {
+            return item != undefined;
+        });
     }
 }
 export = MathHelper;
