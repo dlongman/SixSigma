@@ -3,31 +3,31 @@ define(["require", "exports"], function (require, exports) {
     var MathHelper = (function () {
         function MathHelper() {
         }
-        MathHelper.meanVariance = function (values) {
-            if (values === undefined) {
+        MathHelper.meanVariance = function (data) {
+            if (data === undefined) {
                 throw new Error("the values parameter must be a number[].");
             }
-            var variances = values.map(function (value, index, data) {
-                if (index < data.length - 1) {
-                    return Math.abs(value - data[index + 1]);
+            var variances = data.map(function (value, index, arr) {
+                if (index < arr.length - 1) {
+                    return Math.abs(value - arr[index + 1]);
                 }
                 else {
                     return Math.abs(value);
                 }
             });
-            return this.average(variances);
+            return MathHelper.average(variances);
         };
-        MathHelper.standardDeviation = function (values) {
-            if (values === undefined) {
+        MathHelper.standardDeviation = function (data) {
+            if (data === undefined) {
                 throw new Error("the values parameter must be a number[].");
             }
-            var avg = this.average(values);
-            var squareDiffs = values.map(function (value) {
+            var avg = MathHelper.average(data);
+            var squareDiffs = data.map(function (value) {
                 var diff = value - avg;
                 var sqrDiff = diff * diff;
                 return sqrDiff;
             });
-            var avgSquareDiff = this.average(squareDiffs);
+            var avgSquareDiff = MathHelper.average(squareDiffs);
             var stdDev = Math.sqrt(avgSquareDiff);
             return stdDev;
         };
@@ -35,11 +35,18 @@ define(["require", "exports"], function (require, exports) {
             if (data === undefined) {
                 throw new Error("the data parameter must be a number[].");
             }
+            var sum = MathHelper.sum(data);
+            var avg = sum / data.length;
+            return avg;
+        };
+        MathHelper.sum = function (data) {
+            if (data === undefined) {
+                throw new Error("the data parameter must be a number[].");
+            }
             var sum = data.reduce(function (sum, value) {
                 return sum + value;
             }, 0);
-            var avg = sum / data.length;
-            return avg;
+            return sum;
         };
         MathHelper.min = function (data) {
             if (data === undefined) {
@@ -60,13 +67,11 @@ define(["require", "exports"], function (require, exports) {
             return maxVal;
         };
         MathHelper.movingAverage = function (data, period) {
-            return this._movingFunction(data, period, this.average);
+            return this.movingFunction(data, period, MathHelper.average);
         };
-        MathHelper._movingFunction = function (data, period, func) {
+        MathHelper.movingFunction = function (data, period, func) {
+            console.log(func);
             var returnValue = [];
-            if (period === undefined) {
-                period = 5;
-            }
             var index;
             var lowIndex;
             var highIndex;

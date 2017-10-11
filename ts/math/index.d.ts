@@ -21,6 +21,7 @@ declare module "MathHelper" {
         public static meanVariance(values : number[]) : number;
         public static standardDeviation(values: number[]) : number;
         public static average(data: number[]) : number;
+        public static sum(data: number[]) : number;
         public static max(data: number[]) : number;
         public static movingAverage(data: number[], period: number) : number[];
     }

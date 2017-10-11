@@ -1,47 +1,72 @@
 class MathHelper {
 
-    // calculates the mean variance of the supplied dataset
-    public static meanVariance(values : number[]) : number {
+    /**
+     * Calculates the mean variance of the supplied dataset
+     * @param values 
+     */
+    public static meanVariance(data : number[]) : number {
         
-        if (values === undefined) {
+        if (data === undefined) {
             throw new Error("the values parameter must be a number[]."); 
         }
         
         // calculate the variance between the data points
-        var variances = values.map(function (value, index, data) {
-            if (index < data.length - 1) {
-                return Math.abs(value - data[index + 1]);
+        var variances = data.map(function (value, index, arr) {
+            if (index < arr.length - 1) {
+                return Math.abs(value - arr[index + 1]);
             } else {
                 return Math.abs(value);
             }
         });
         // return the average of the variances
-        return this.average(variances);
+        return MathHelper.average(variances);
     }
 
-    // calculates the standard deviation of the supplied dataset
-    public static standardDeviation(values: number[]) : number {
+    /**
+     * Calculates the standard deviation of the supplied dataset
+     * @param data the data to compare 
+     */
+    public static standardDeviation(data: number[]) : number {
         
-        if (values === undefined) {
+        if (data === undefined) {
             throw new Error("the values parameter must be a number[]."); 
         }
 
-        var avg = this.average(values);
+        var avg = MathHelper.average(data);
 
-        var squareDiffs = values.map(function (value) {
+        var squareDiffs = data.map(function (value) {
             var diff = value - avg;
             var sqrDiff = diff * diff;
             return sqrDiff;
         });
 
-        var avgSquareDiff = this.average(squareDiffs);
+        var avgSquareDiff = MathHelper.average(squareDiffs);
 
         var stdDev = Math.sqrt(avgSquareDiff);
         return stdDev;
     }
 
-    // calculates the numerical average of the supplied dataset
+    /**
+     * Calculates the numerical average of the supplied dataset
+     * @param data the data to compare
+     */
     public static average(data: number[]) : number {
+        
+        if (data === undefined) {
+            throw new Error("the data parameter must be a number[]."); 
+        }
+
+        var sum: number = MathHelper.sum(data); 
+
+        var avg: number = sum / data.length;
+        return avg;
+    }
+
+    /**
+     * Calculates the total of the supplied dataset
+     * @param data the data to compare
+     */
+    public static sum(data: number[]) : number {
         
         if (data === undefined) {
             throw new Error("the data parameter must be a number[]."); 
@@ -51,11 +76,13 @@ class MathHelper {
             return sum + value;
         }, 0);
 
-        var avg: number = sum / data.length;
-        return avg;
+        return sum;
     }
 
-    // returns the smallest value in the supplied dataset
+    /**
+     * returns the smallest value in the supplied dataset
+     * @param data the data to compare
+     */
     public static min(data: number[]) : number {
         
         if (data === undefined) {
@@ -69,7 +96,10 @@ class MathHelper {
         return minVal;
     }
 
-    // returns the largest value in the supplied dataset
+    /**
+     * returns the largest value in the supplied dataset
+     * @param data the data to compare
+     */
     public static max(data: number[]) : number {
         
         if (data === undefined) {
@@ -83,20 +113,23 @@ class MathHelper {
         return maxVal;
     }
 
-    // calculates a moving average on the numerical dataset
+    /**
+     * Calculates a moving average on the numerical dataset
+     */
     public static movingAverage(data: number[], period: number) : number[] {
-
-        return this._movingFunction(data, period, this.average);
+        return this.movingFunction(data, period, MathHelper.average);
     }
 
-    // executes the supplied function on the dataset only including the last X values
-    private static _movingFunction(data: number[], period: number, func: Function) : number[] {
+    /**
+     * Executes the supplied function on the dataset only including the last X values
+     * @param data the data to compare
+     * @param period the number of data points to include in each slice
+     * @param func the function to apply to each slice of the data
+     */
+    public static movingFunction(data: number[], period: number, func: Function) : number[] {
 
+        console.log(func);
         var returnValue = [];
-
-        if (period === undefined) {
-            period = 5;
-        }
 
         // loop through data array and calculate the average for each value
         // including the past X values, where X = period

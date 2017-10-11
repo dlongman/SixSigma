@@ -4,6 +4,47 @@ import 'mocha';
 
 describe('Check MathHelper module function ', function () {
 
+    describe("sum ", () => {
+
+        it("returns 15 when given [1,2,3,4,5]", () => {
+            var data = [1, 2, 3, 4, 5];
+            expect(MathHelper.sum(data)).to.equal(15);
+        });
+
+        it("returns 15 when given [1.0, 2.0, 3.0, 4.0, 5.0]", () => {
+            var data = [1.0, 2.0, 3.0, 4.0, 5.0];
+            expect(MathHelper.sum(data)).to.equal(15);
+        });
+
+        it('returns 3 when given [-1,-2,3,2,1]', () => {
+            var data = [-1, -2, 3, 2, 1];
+            expect(MathHelper.sum(data)).to.equal(3);
+        });
+
+        it('returns -15 when given [-1,-2,-3,-4,-5]', () => {
+            var data = [-1, -2, -3, -4, -5];
+            expect(MathHelper.sum(data)).to.equal(-15);
+        });
+
+        it('returns 0 when given [0,0,0,0,0]', () => {
+            var data = [0, 0, 0, 0, 0];
+            expect(MathHelper.sum(data)).to.equal(0);
+        });
+
+        it('returns an error when given undefined', () => {
+            // written like this because the expect().to.throw() syntax does not work when using TS
+            try {
+                var data;
+                MathHelper.sum(data);
+                expect(false).is.true;
+            }
+            catch (e) {
+                expect(true).is.true;
+            }
+        });
+
+    });
+
     describe("average ", () => {
 
         it('returns 3 when given [1,2,3,4,5]', () => {
