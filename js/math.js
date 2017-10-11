@@ -58,7 +58,9 @@ define(["require", "exports"], function (require, exports) {
             return this.movingFunction(data, period, MathHelper.average);
         };
         MathHelper.movingFunction = function (data, period, func) {
-            data = MathHelper.validateData(data);
+            if (data === undefined) {
+                throw new Error("the data parameter must be a number[].");
+            }
             var returnValue = [];
             var index;
             var lowIndex;

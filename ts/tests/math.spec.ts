@@ -259,9 +259,9 @@ describe('Check MathHelper module function ', function () {
             expect(MathHelper.movingAverage(data, 3)).to.deep.equal([undefined, undefined, 2,3,4]);
         });
 
-        it("returns [undefined,undefined,2,3] when given [1,2,3,4,undefined] and a period of 3", () => {
+        it("returns [undefined,undefined,2,3,3.5] when given [1,2,3,4,undefined] and a period of 3", () => {
             var data: number[] = [1,2,3,4,undefined];
-            expect(MathHelper.movingAverage(data, 3)).to.deep.equal([undefined, undefined, 2,3]);
+            expect(MathHelper.movingAverage(data, 3)).to.deep.equal([undefined, undefined, 2,3,3.5]);
         });
 
         it("returns [undefined, undefined, 0, 0, 0] when given [0,0,0,0,0] and a period of 3", () => {

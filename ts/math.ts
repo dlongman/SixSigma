@@ -111,7 +111,10 @@ class MathHelper {
      */
     public static movingFunction(data: number[], period: number, func: Function) : number[] {
 
-        data = MathHelper.validateData(data);
+        if (data === undefined) {
+            throw new Error("the data parameter must be a number[]."); 
+        }
+        
         var returnValue = [];
 
         // loop through data array and calculate the average for each value
@@ -141,6 +144,7 @@ class MathHelper {
      * @param data the data set to process
      */
     public static validateData(data: number[]): number[] {
+        
         if (data === undefined) {
             throw new Error("the data parameter must be a number[]."); 
         }
