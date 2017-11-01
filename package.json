@@ -17,9 +17,15 @@
     "access": "public"
   },
   "main": "./js/sixsigma.js",
-  "types": "./ts/sixsigma/main.d.ts",
+  "types": "./ts/typings/sixsigma.d.ts",
+  "typescript": {
+    "definitions": [
+      "./ts/typings/math.d.ts",
+      "./ts/typings/sixsigma.d.ts"
+    ]
+  },
   "scripts": {
-    "prebuild": "rmdir /s /q .\\js",
+    "prebuild": "if exist .\\js\\ rmdir /s /q .\\js\\",
     "build": "tsc -p .",
     "postbuild": "npm run test",
     "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha -r ts-node/register ts/tests/**/*.spec.ts",
